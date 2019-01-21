@@ -1,0 +1,139 @@
+/* Common stuff */
+
+.navigation-bar,
+.navigation-bar a,
+.navigation-bar button {
+  background-color: var(--navigation-background-color);
+  color: var(--navigation-foreground-color);
+}
+
+.navigation-bar {
+  height: 50px;
+  width: 100%;
+  border-bottom: 1px solid #000;
+  overflow: hidden;
+  z-index: 1000; /* we have to make sure that it is above ace, this is not the best way :( */
+  display: flex;
+  align-items: center;
+}
+
+.navigation-bar .tddbin {
+  color: white;
+  font-weight: bold;
+  font-size: x-large;
+  margin-right: 1em;
+  height: 30px;
+  vertical-align: middle;
+}
+
+.navigation-bar a,
+.navigation-bar .transpileSwitch,
+.navigation-bar button {
+  background-color: var(--navigation-hover-color);
+  border: none;
+  font-size: inherit;
+  vertical-align: middle;
+  margin-left: 1px;
+  height: 50px;
+  outline: none;
+  padding: 0 1rem;
+}
+
+.navigation-bar button:hover,
+.navigation-bar .transpileSwitch:hover {
+  background-color: var(--navigation-hover-background-color);
+  color: var(--navigation-hover-color);
+}
+
+/* logo */
+
+.navigation-bar button.logo {
+  background-image: url(./img/tddbin_logo.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  height: 30px;
+  width: 30px;
+  margin: 10px 20px 10px 10px;
+  vertical-align: middle;
+}
+.navigation-bar button.logo:hover {
+  animation-name: spin;
+  animation-duration: 30s;
+  animation-timing-function: linear;
+}
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+.navigation-bar .icon {
+  padding-left: 48px;
+  padding-right: 16px;
+  background-repeat: no-repeat;
+}
+
+/*.navigation-bar .icon.save {*/
+  /*background-image: url(./img/arrow.svg);*/
+/*}*/
+
+.navigation-bar .icon.twitter,
+.navigation-bar .icon.github {
+  background-size: 50%;
+  background-position: center center;
+  float: right;
+}
+
+.navigation-bar .icon.github {
+  background-image: url(./img/github_icon.svg);
+}
+
+.navigation-bar .icon.twitter {
+  background-image: url(./img/twitter_icon.svg);
+}
+
+.navigation-bar .transpileSwitch {
+  display: inline-flex;
+  align-items: center;
+}
+  .navigation-bar .transpileSwitch input {
+    margin-left: 1rem;
+  }
+  .navigation-bar .transpileSwitch:hover .transpileHint {
+    display: block;
+  }
+
+.navigation-bar .transpileHint {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 50px;
+  opacity: 1;
+
+  animation: unrollHint 0.3s;
+  overflow: hidden;
+}
+  .navigation-bar .transpileHint .content {
+    padding: 1rem;
+    background-color: var(--navigation-hover-background-color);
+    color: var(--navigation-hover-color);
+  }
+  .navigation-bar .transpileHint .highlight {
+    border-color: red;
+  }
+  .navigation-bar .transpileHint p {
+    padding: 0.5rem;
+    border: 0 solid transparent;
+    border-left-width: 2px;
+  }
+  .navigation-bar .transpileHint .arrow {
+    border-left: 2rem solid transparent;
+    border-right: 2rem solid transparent;
+    border-bottom: 2rem solid var(--navigation-hover-background-color);
+    width: 0;
+    left: 27rem;
+    position: relative;
+  }
+
+@keyframes unrollHint {
+    0% { height: 0; }
+    99% { height: 5rem; }
+    100% { height: auto; }
+}
